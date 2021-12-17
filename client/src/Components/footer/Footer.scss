@@ -1,0 +1,44 @@
+.Footer {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  .back {
+    display: flex;
+    align-items: center;
+    .text {
+      padding: 0 10px;
+      font-size: large;
+    }
+    img {
+      width: 30px;
+    }
+  }
+  .payment {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    .continue {
+      padding: 20px;
+      border: 1px solid black;
+      margin-right: 10px;
+      border-radius: 100px;
+    }
+    .proceed {
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 100px;
+    }
+    .continue:hover {
+      cursor: pointer;
+      border: 1px solid #66cdaa;
+      background-color: #66cdaa;
+      color: white;
+    }
+    .proceed:hover {
+      cursor: pointer;
+      border: 1px solid #66cdaa;
+      background-color: #66cdaa;
+      color: white;
+    }
+  }
+}

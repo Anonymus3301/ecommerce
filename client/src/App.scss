@@ -1,0 +1,11 @@
+.MainDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .Payment {
+    width: 500px;
+  }
+  .Cart {
+    width: 500px;
+  }
+}

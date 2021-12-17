@@ -1,0 +1,30 @@
+.Head2 {
+  margin: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .title {
+    font-size: x-large;
+  }
+  .pic {
+    width: 140px;
+    .cart {
+      border: 1px solid #66cdaa;
+      border-radius: 100px;
+      padding: 2px;
+    }
+    .truck {
+      border: 1px solid #66cdaa;
+      border-radius: 100px;
+      padding: 2px;
+      background-color: #66cdaa;
+    }
+    .line {
+      width: 30px;
+    }
+    img {
+      max-height: 30px;
+      fill: green;
+    }
+  }
+}
