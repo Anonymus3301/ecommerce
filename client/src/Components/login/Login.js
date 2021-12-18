@@ -1,16 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../actions/update-user";
+import axios from "axios";
 import "./Login.scss";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const formSubmit = (e) => {
-    history.push("/");
+    e.preventDefault();
+    axios
+      .post("http://localhost:4000/app/login", { email, password })
+      .then((res) => {
+        if (res.data.message === "Login Successful") {
+          dispatch(loginUser(res.data.user));
+          history.push("/");
+        } else {
+          alert(res.data.message);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -19,7 +34,12 @@ const Login = () => {
         <span>
           <img src={logo} alt=""></img>
         </span>
-        <span>
+        <span
+          className="Heading"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
           <span className="yellow">E-</span>Shop
         </span>
       </span>

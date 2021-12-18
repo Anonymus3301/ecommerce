@@ -1,6 +1,9 @@
 .login {
   display: flex;
   flex-direction: column;
+  .Heading:hover {
+    cursor: pointer;
+  }
   .logo {
     display: flex;
     align-items: center;
