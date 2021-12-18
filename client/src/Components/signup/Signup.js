@@ -21,14 +21,19 @@ const Signup = () => {
       password: password,
     };
 
-    axios.post("http://localhost:4000/app/signup", registered).then((res) => {
-      if (res.data.message === "Sucessfully Registered") {
-        dispatch(loginUser({ userName: name }));
-        history.push("/");
-      } else {
-        alert(res.data.message);
-      }
-    });
+    axios
+      .post(
+        "https://ecommerce-backend1337.herokuapp.com/app/signup",
+        registered
+      )
+      .then((res) => {
+        if (res.data.message === "Sucessfully Registered") {
+          dispatch(loginUser({ userName: name }));
+          history.push("/");
+        } else {
+          alert(res.data.message);
+        }
+      });
   };
 
   return (
