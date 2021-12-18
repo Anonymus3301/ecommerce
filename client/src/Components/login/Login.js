@@ -16,7 +16,10 @@ const Login = () => {
   const formSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/app/login", { email, password })
+      .post("https://ecommerce-backend1337.herokuapp.com/app/login", {
+        email,
+        password,
+      })
       .then((res) => {
         if (res.data.message === "Login Successful") {
           dispatch(loginUser(res.data.user));
