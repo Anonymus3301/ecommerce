@@ -1,6 +1,28 @@
 .ShipNPay {
   padding: 20px;
   min-width: 350px;
+  .logged {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .intro {
+      font-size: large;
+
+      span {
+        font-weight: bold;
+      }
+    }
+    .logout-btn {
+      border: none;
+      background-color: red;
+      color: white;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .logout-btn:hover {
+      cursor: pointer;
+    }
+  }
   .title1 {
     font-size: x-large;
     font-family: Georgia, "Times New Roman", Times, serif;

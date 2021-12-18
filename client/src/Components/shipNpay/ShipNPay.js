@@ -1,18 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ShipNPay.scss";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ShipNPay = () => {
+  const state = useSelector((state) => state.updateState);
+
+  useEffect(() => {}, [state]);
+
+  const funLogOut = (e) => {
+    console.log(e.target);
+  };
+
+  const Logged = () => {
+    return (
+      <div className="logged">
+        <div className="intro">
+          Hello <span>{state.userName}</span>!
+        </div>
+        <form onSubmit={funLogOut}>
+          <button type="submit" className="logout-btn">
+            LOG OUT
+          </button>
+        </form>
+      </div>
+    );
+  };
+
   return (
     <div className="ShipNPay">
-      <div className="login-main">
-        <Link to="/login">
-          <span className="log">LOG IN</span>
-        </Link>
-        <Link to="/signup">
-          <span className="sign">SIGN UP</span>
-        </Link>
-      </div>
+      {state.log ? (
+        <Logged />
+      ) : (
+        <div className="login-main">
+          <Link to="/login">
+            <span className="log">LOG IN</span>
+          </Link>
+          <Link to="/signup">
+            <span className="sign">SIGN UP</span>
+          </Link>
+        </div>
+      )}
+
       <div className="info">
         <div className="title">Shipping information</div>
         <div className="emNad">

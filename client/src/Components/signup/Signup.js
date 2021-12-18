@@ -1,19 +1,49 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 import "./Signup.scss";
+import { loginUser } from "../../actions/update-user";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    const registered = {
+      userName: name,
+      email: email,
+      password: password,
+    };
+
+    axios.post("http://localhost:4000/app/signup", registered).then((res) => {
+      if (res.data.message === "Sucessfully Registered") {
+        dispatch(loginUser({ userName: name }));
+        history.push("/");
+      } else {
+        alert(res.data.message);
+      }
+    });
+  };
+
   return (
     <div className="signup">
       <span className="logo">
         <span>
           <img src={logo} alt=""></img>
         </span>
-        <span>
+
+        <span
+          className="Heading"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
           <span className="yellow">E-</span>Shop
         </span>
       </span>
@@ -26,7 +56,7 @@ const Signup = () => {
 
             <div className="title-signup">SIGN UP</div>
           </div>
-          <form>
+          <form onSubmit={formSubmit}>
             <div className="input-div">
               <label htmlFor="username">UserName</label>
               <input
